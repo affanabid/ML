@@ -1,0 +1,100 @@
+Multiple Linear Regression Analysis - CO2 Emissions Dataset
+=================================================
+
+a. Comparison of Attributes Selected by Methods
+---------------------------------------------
+
+1. Feature Count Overview:
+   - Backward Elimination: 50 features
+   - Forward Selection: 47 features
+   - Stepwise Selection: 47 features
+
+2. Common Features Across All Methods:
+   Numerical Features (100% retained by all):
+   - Engine Size(L)
+   - Cylinders
+   - All Fuel Consumption metrics:
+     * City (L/100 km)
+     * Highway (L/100 km)
+     * Combined (L/100 km)
+     * Combined (mpg)
+
+   Categorical Features:
+   - Vehicle Classes: 7 common classes (0,2,4,9,11,13,14)
+   - Fuel Types: All types (0,2,3)
+   - Transmission: Core types (0,2,3,7)
+   - Make: 42 common manufacturers
+
+3. Method-Specific Features:
+   - Backward Elimination: 
+     * 8 additional features (unique)
+     * Mostly transmission types
+     * More conservative in feature elimination
+   
+   - Forward & Stepwise Selection:
+     * Identical feature sets
+     * More aggressive feature elimination
+     * No unique features
+
+b. Comparison with Full Model (All Variables)
+-------------------------------------------
+
+1. Feature Reduction:
+   - Full Model: 92 features (baseline)
+   - Backward: 45.7% reduction
+   - Forward/Stepwise: 48.9% reduction
+
+2. Performance Impact (R² Scores):
+   Full Model (Baseline):
+   - Training: 0.9939
+   - Testing:  0.9908
+
+   Performance Loss:
+   - Backward: -0.000069 (train), -0.000061 (test)
+   - Forward:  -0.000059 (train), -0.000055 (test)
+   - Stepwise: -0.000059 (train), -0.000055 (test)
+
+3. Efficiency Analysis:
+   - All methods maintained >99.9% of full model performance
+   - Forward/Stepwise achieved maximum feature reduction
+   - Negligible impact on predictive power
+
+c. Coefficient/Slope Comparison
+-----------------------------
+
+1. Engine Size(L):
+   - Full Model: 0.5705 (baseline)
+   - Backward:   0.6550 (+14.8%)
+   - Forward:    0.6873 (+20.5%)
+   - Stepwise:   0.6873 (+20.5%)
+   Analysis: Feature importance increased in reduced models
+
+2. Cylinders:
+   - Full Model: 1.5744 (baseline)
+   - Backward:   1.4501 (-7.9%)
+   - Forward:    1.3889 (-11.8%)
+   - Stepwise:   1.3889 (-11.8%)
+   Analysis: Slightly reduced importance in simplified models
+
+3. Fuel Consumption City (L/100 km):
+   - Full Model: 22.2691 (baseline)
+   - Backward:   21.8587 (-1.8%)
+   - Forward:    22.3343 (+0.3%)
+   - Stepwise:   22.3343 (+0.3%)
+   Analysis: Most stable coefficient across all models
+
+Key Findings:
+1. Feature Selection Impact:
+   - Numerical features show consistent importance
+   - Coefficient changes suggest refined feature relationships
+   - Forward/Stepwise produce identical coefficients
+
+2. Model Stability:
+   - Coefficients remain relatively stable
+   - Major predictors maintain their significance
+   - Slight adjustments in feature importance
+
+3. Practical Implications:
+   - Forward/Stepwise selection recommended
+   - Best balance of reduction vs. performance
+   - Most consistent coefficient estimates 
