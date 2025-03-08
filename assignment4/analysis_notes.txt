@@ -1,0 +1,53 @@
+Polynomial Regression Feature Selection Analysis
+===========================================
+
+1. Comparison of Selected Features Across Methods:
+------------------------------------------------
+a) Backward Elimination:
+   - Selected 18 features
+   - Retained most polynomial terms
+   - Notably excluded: Temperature(°C)^2 and Material Transformation Metric^2
+   - Kept most interaction terms between variables
+
+b) Forward Selection & Bidirectional Selection:
+   - Both methods selected identical 3 features:
+     * Material Transformation Metric^2
+     * Temperature (°C) Material Transformation Metric
+     * Material Transformation Metric
+   - Much more selective than backward elimination
+   - Focus on Material Transformation Metric and its interactions
+
+c) Keep All Variables:
+   - Used all 21 features (including polynomial and interaction terms)
+   - Serves as baseline for comparison
+
+2. Performance Comparison with Full Model:
+----------------------------------------
+R² and Adjusted R² scores:
+
+Method                  R²       Adjusted R²
+-----------------------------------------------
+Backward Elimination    0.8745   0.8740  (Best)
+Forward Selection      0.8045   0.8044
+Bidirectional         0.8045   0.8044
+Keep All Variables    0.8568   0.8561
+
+Key Observations:
+- Backward Elimination performed best despite using fewer features than full model
+- Forward and Bidirectional methods showed identical performance
+- Full model (Keep All Variables) performed better than Forward/Bidirectional but worse than Backward
+- The difference between R² and Adjusted R² is smallest for Forward/Bidirectional, indicating good balance between complexity and performance
+
+3. Feature Selection Patterns:
+----------------------------
+1. Material Transformation Metric appears important in all methods
+2. Forward and Bidirectional methods prefer simpler models with focus on strongest predictors
+3. Backward Elimination retains more complex interactions while still improving on full model
+4. Temperature and its interactions appear significant across methods
+
+Conclusion:
+----------
+- Backward Elimination provides the best balance of complexity and performance
+- The similarity between Forward and Bidirectional results suggests strong individual predictors
+- The full model's lower performance compared to Backward Elimination indicates some features may introduce noise
+- Material Transformation Metric and its interactions are consistently important predictors
